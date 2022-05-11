@@ -11,10 +11,10 @@ The UI of the program is simple. On top there is an address bar, capture button,
 
 **Examples of a Screenshot**
 ------------
-The program will screenshot the entire webpage. This may seem excessive, but this program is created with archival in mind. Below is an example of what the program would output. The webpage we use in this example is the google search result of "hello world".
+The program will screenshot the entire webpage. This may seem excessive, but this program is created with archival in mind. Below is an example of what the program would output. The webpage we use in this example is the google search result of "hello world" (reduced size to not fill up too much of the readme).
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/100814612/167742872-7c91bec3-e4ce-4025-8ac9-457a0344c88a.jpg" width="700" height="886"><img>
+<img src="https://user-images.githubusercontent.com/100814612/167742872-7c91bec3-e4ce-4025-8ac9-457a0344c88a.jpg" width="400" height="506"><img>
 </p>
 
 **Webview2 Screenshot Code**
