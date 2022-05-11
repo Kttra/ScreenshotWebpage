@@ -17,13 +17,69 @@ The program will screenshot the entire webpage. This may seem excessive, but thi
 <img src="https://user-images.githubusercontent.com/100814612/167742872-7c91bec3-e4ce-4025-8ac9-457a0344c88a.jpg" width="700" height="886"><img>
 </p>
 
+**Webview2 Screenshot Code**
+-------------------------
+The code used to screenshot the webpage is shown below if you want to use it in your own program. Make sure you install the Newtonsoft Json package.
+
+```csharp
+//Call the methods to take a screenshot
+private async void TakeScreenshot()
+{
+    Image myImage = await TakeWebScreenshot();
+    myImage.Save("Screenshot.jpg");
+}
+//Get the webpage bitmap and then save it as an image
+public async Task<Image> TakeWebScreenshot(bool currentControlClipOnly = false)
+{
+    dynamic scl = null;
+    Size siz;
+
+    if (!currentControlClipOnly)
+    {
+        var res = await myWebView.CoreWebView2.ExecuteScriptAsync(@"var v = {""w"":document.body.scrollWidth, ""h"":document.body.scrollHeight}; v;");
+        try { scl = JObject.Parse(res); } catch { }
+    }
+    siz = scl != null ?
+                new Size((int)scl.w > myWebView.Width ? (int)scl.w : myWebView.Width,
+                            (int)scl.h > myWebView.Height ? (int)scl.h : myWebView.Height)
+                :
+                myWebView.Size;
+
+    var img = await GetWebBrowserBitmap(siz);
+    return img;
+}
+//Get the webpage bitmap
+private async Task<Bitmap> GetWebBrowserBitmap(Size clipSize)
+{
+    dynamic clip = new JObject();
+    clip.x = 0;
+    clip.y = 0;
+    clip.width = clipSize.Width;
+    clip.height = clipSize.Height;
+    clip.scale = 1;
+
+    dynamic settings = new JObject();
+    settings.format = "jpeg";
+    settings.clip = clip;
+    settings.fromSurface = true;
+    settings.captureBeyondViewport = true;
+
+    var p = settings.ToString(Newtonsoft.Json.Formatting.None);
+
+    var devData = await myWebView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.captureScreenshot", p);
+    var imgData = (string)((dynamic)JObject.Parse(devData)).data;
+    var ms = new MemoryStream(Convert.FromBase64String(imgData));
+    return (Bitmap)Image.FromStream(ms);
+}
+```
+
 **Packages Used**
 ------------------
 Both the Microsoft.Web.WebView2 and Newtonsoft.Json packages wer used in this project. If you wish to edit the source code, make sure to install them. The WebView2 package is used as the browser while the Newtonsoft Json package is used to help capture the page.
 
 **Plans**
 ---------------
-I plan to continue working on this program by making it more automated. Future features include: adding application settings, allowing for a list of links to be added for capturing, reassigning default picture name, and much more.  
+I plan to continue working on this program by making it more automated. Future features include: adding application settings, allowing for a list of links to be added for capturing, reassigning default picture name, and much more.
 
 **Other Related Projects**
 -----------------------
