@@ -21,6 +21,10 @@ The program will screenshot the entire webpage. This may seem excessive, but thi
 ------------------
 Both the Microsoft.Web.WebView2 and Newtonsoft.Json packages wer used in this project. If you wish to edit the source code, make sure to install them. The WebView2 package is used as the browser while the Newtonsoft Json package is used to help capture the page.
 
+**Plans**
+---------------
+I plan to continue working on this program by making it more automated. Future features include: adding application settings, allowing for a list of links to be added for capturing, reassigning default picture name, and much more.  
+
 **Other Related Projects**
 -----------------------
 Below are other similar projects related to this application.
