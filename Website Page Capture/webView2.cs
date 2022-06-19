@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Linq; //Use Newtonsoft Json package
+using System.Web;
 
 namespace webView2_Starter_Template
 {
@@ -44,6 +45,10 @@ namespace webView2_Starter_Template
         {
             LoadUrl();
         }
+        public int calMat(int num1, int num2)
+        {
+            return num1 + num2;
+        }
         //Load the webpage when enter is pressed in the address bar
         private void AddressBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -55,13 +60,53 @@ namespace webView2_Starter_Template
         //Take a screenshot of the webview2 page
         private async void BtnCapture_Click(object sender, EventArgs e)
         {
+            string imageName = Properties.Settings.Default.PicName;
+            string picExtension = Properties.Settings.Default.PicExtension;
+
+            //Below is to save to specific directory or in current directory
+            string fileName = imageName + "." + picExtension;
+
+            //Create directory if it doesn't exist
+            string saveDirectory = @"images\"; //@"C:\images"
+            if (!Directory.Exists(saveDirectory))
+            {
+                Directory.CreateDirectory(saveDirectory);
+            }
+
+            //Combine file name and path
+            string fileSavePath = Path.Combine(saveDirectory, fileName);
+
+            //Capture screenshot and save
             Image myImage = await TakeWebScreenshot();
-            myImage.Save("Screenshot.jpg");
+            myImage.Save(fileSavePath, GetFileType());
+        }
+        //Return picture filetype
+        private System.Drawing.Imaging.ImageFormat GetFileType()
+        {
+            System.Drawing.Imaging.ImageFormat fileType;
+
+            switch (Properties.Settings.Default.PicExtension)
+            {
+                case "png":
+                    fileType = System.Drawing.Imaging.ImageFormat.Png;
+                    break;
+                case "jpg":
+                    fileType = System.Drawing.Imaging.ImageFormat.Jpeg;
+                    break;
+                case "bmp":
+                    fileType = System.Drawing.Imaging.ImageFormat.Bmp;
+                    break;
+                default:
+                    fileType = System.Drawing.Imaging.ImageFormat.Png;
+                    break;
+            }
+
+            return fileType;
         }
         //Get the webpage bitmap and then save it as an image
         public async Task<Image> TakeWebScreenshot(bool currentControlClipOnly = false)
         {
-            dynamic scl = null;
+            dynamic? scl = null;
             Size siz;
 
             if (!currentControlClipOnly)
@@ -101,5 +146,19 @@ namespace webView2_Starter_Template
             var ms = new MemoryStream(Convert.FromBase64String(imgData));
             return (Bitmap)Image.FromStream(ms);
         }
+        //Open settings form
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            Form_Settings settingsForm = new Form_Settings();
+            var result = settingsForm.ShowDialog();
+
+            //If the form closed succesfully, tell the user
+            if (result == DialogResult.OK)
+            {
+                MessageBox.Show("Settings saved. Image files names will now be \"" + Properties.Settings.Default.PicName
+                    + "\" and the file type will be changed to " + Properties.Settings.Default.PicExtension + ".", "Success");
+            }
+        }
     }
 }
+
