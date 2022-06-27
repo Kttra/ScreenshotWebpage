@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\kevin\source\repos\Website Capture\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Form_CustomCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form_Settings.cs">
       <SubType>Form</SubType>
     </Compile>

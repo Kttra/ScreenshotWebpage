@@ -33,6 +33,8 @@
             this.comboBoxPicType = new System.Windows.Forms.ComboBox();
             this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.BtnConfirm = new System.Windows.Forms.Button();
+            this.textBoxFolder = new System.Windows.Forms.TextBox();
+            this.labelFolder = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelPicType
@@ -76,7 +78,7 @@
             // 
             // BtnConfirm
             // 
-            this.BtnConfirm.Location = new System.Drawing.Point(145, 88);
+            this.BtnConfirm.Location = new System.Drawing.Point(144, 125);
             this.BtnConfirm.Name = "BtnConfirm";
             this.BtnConfirm.Size = new System.Drawing.Size(75, 23);
             this.BtnConfirm.TabIndex = 4;
@@ -84,11 +86,30 @@
             this.BtnConfirm.UseVisualStyleBackColor = true;
             this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
+            // textBoxFolder
+            // 
+            this.textBoxFolder.Location = new System.Drawing.Point(152, 88);
+            this.textBoxFolder.Name = "textBoxFolder";
+            this.textBoxFolder.Size = new System.Drawing.Size(172, 23);
+            this.textBoxFolder.TabIndex = 6;
+            // 
+            // labelFolder
+            // 
+            this.labelFolder.AutoSize = true;
+            this.labelFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelFolder.Location = new System.Drawing.Point(12, 87);
+            this.labelFolder.Name = "labelFolder";
+            this.labelFolder.Size = new System.Drawing.Size(135, 24);
+            this.labelFolder.TabIndex = 5;
+            this.labelFolder.Text = "Folder name:";
+            // 
             // Form_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 120);
+            this.ClientSize = new System.Drawing.Size(351, 156);
+            this.Controls.Add(this.textBoxFolder);
+            this.Controls.Add(this.labelFolder);
             this.Controls.Add(this.BtnConfirm);
             this.Controls.Add(this.textBoxFileName);
             this.Controls.Add(this.comboBoxPicType);
@@ -111,5 +132,7 @@
         private TextBox textBoxFileName;
         private Button BtnConfirm;
         private ComboBox comboBoxPicType;
+        private TextBox textBoxFolder;
+        private Label labelFolder;
     }
 }

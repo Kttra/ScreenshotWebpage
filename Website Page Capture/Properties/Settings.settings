@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="webView2_Starter_Template.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PicExtension" Type="System.String" Scope="User">
+      <Value Profile="(Default)">png</Value>
+    </Setting>
+    <Setting Name="PicName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Screenshot</Value>
+    </Setting>
+    <Setting Name="FolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -36,6 +36,9 @@
             this.labelProgress = new System.Windows.Forms.Label();
             this.BtnSettings = new System.Windows.Forms.Button();
             this.BtnCustom = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.progressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.myWebView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +88,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(91, 40);
+            this.progressBar1.Location = new System.Drawing.Point(101, 40);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 4;
@@ -119,12 +122,47 @@
             this.BtnCustom.TabIndex = 7;
             this.BtnCustom.Text = "Custom";
             this.BtnCustom.UseVisualStyleBackColor = true;
+            this.BtnCustom.Click += new System.EventHandler(this.BtnCustom_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(563, 40);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpen.Location = new System.Drawing.Point(482, 40);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.TabIndex = 9;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
+            // progressLabel
+            // 
+            this.progressLabel.AutoSize = true;
+            this.progressLabel.Font = new System.Drawing.Font("Cooper Black", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.progressLabel.Location = new System.Drawing.Point(218, 44);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(0, 14);
+            this.progressLabel.TabIndex = 10;
             // 
             // webView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.progressLabel);
+            this.Controls.Add(this.btnOpen);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.BtnCustom);
             this.Controls.Add(this.BtnSettings);
             this.Controls.Add(this.labelProgress);
@@ -144,7 +182,6 @@
         }
 
         #endregion
-        private TextBox AddressBox;
         private Button BtnConfirm;
         private Button BtnCapture;
         private Microsoft.Web.WebView2.WinForms.WebView2 myWebView;
@@ -154,5 +191,9 @@
         private Label labelProgress;
         private Button BtnSettings;
         private Button BtnCustom;
+        public TextBox AddressBox;
+        private Button btnCancel;
+        private Button btnOpen;
+        private Label progressLabel;
     }
 }

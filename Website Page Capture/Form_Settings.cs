@@ -16,6 +16,7 @@ namespace webView2_Starter_Template
         public Form_Settings()
         {
             InitializeComponent();
+            textBoxFolder.Text = Properties.Settings.Default.FolderName;
         }
         //Default selected item in combobox (selects the previously saved option)
         private int GetDefaultPicType()
@@ -65,11 +66,12 @@ namespace webView2_Starter_Template
         {
             //Remove any invalid characters from the file name
             textBoxFileName.Text = ReplaceInvalidChars(textBoxFileName.Text);
+            textBoxFolder.Text = ReplaceInvalidChars(textBoxFolder.Text);
 
             //Check if file name is an empty string
-            if (String.IsNullOrEmpty(textBoxFileName.Text))
+            if (String.IsNullOrEmpty(textBoxFileName.Text) || String.IsNullOrEmpty(textBoxFolder.Text))
             {
-                MessageBox.Show("File name cannot be empty", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Textboxes cannot be empty", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -97,6 +99,7 @@ namespace webView2_Starter_Template
             }
 
             Properties.Settings.Default.PicName = textBoxFileName.Text;
+            Properties.Settings.Default.FolderName = textBoxFolder.Text;
 
             //Save the settings
             Properties.Settings.Default.Save();
