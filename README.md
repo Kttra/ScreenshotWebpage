@@ -1,5 +1,5 @@
-# ScreenshotWebpage
-A program that screenshots the entire page that the browser is on (creates a jpg file named "Screenshot" in the same folder as the program). Created using C#, .NET 6, and Visual Studio Winforms.
+# ScreenshotWebpage (Simple Version)
+A program that screenshots the entire page that the browser is on (creates a jpg file named "Screenshot" in the same folder as the program). Created using C#, .NET 6, and Visual Studio Winforms. This branch is the original version of my screenshot program. It has very limited functionality, but it is more simple to use since all it does is screenshot the current open page.
 
 **Layout**
 ------------
