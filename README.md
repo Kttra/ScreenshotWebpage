@@ -6,7 +6,49 @@ A program that screenshots the entire page that the browser is on (creates a jpg
 The UI of the program is simple. On top there is an address bar, capture button, and a navigation button. In the center of the application, there is a webview2 form. The capture button by default, screenshots the webpage. Go navigates to whatever is typed in the address bar. There are safety measures in place to prevent loading invalid links.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/100814612/167742602-0a5c3960-41d6-4dc9-9b41-a0a8a8897ff8.png"><img>
+<img src="https://user-images.githubusercontent.com/100814612/177068454-30e3973a-9690-424c-a79c-5c1e699d0167.png"><img>
+</p>
+
+**Buttons**
+------------
+This project has been updated to add more features and buttons. Below is a list explaining the functions of the new buttons
+- Open
+    - File explorer opens to the current directory (the directory of the program/image files)
+- Cancel
+    - Stops any processes that are currently in progress
+- Custom
+    - Opens custom capture options
+- Settings
+    - Opens the settings menu
+- Capture
+    - Capture the current webpage
+- Go
+    - Goes to the link in the address bar
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/100814612/177064714-35c6979a-62d9-4fae-baa4-03e84e4e5149.png"><img>
+</p>
+
+**Settings Button**
+-------
+The settings control the image type the capture will save as. It also controls the name of the image and the folder name the images will be saved to.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/100814612/177068315-7b623d0e-9fcc-403e-b261-2fecd4a64a6c.png"><img>
+</p>
+
+**Custom Button**
+-------
+The first tab is for screenshotting specific page numbers with set intervals. This process will append the number to the end of the url string. Interval is the set numbers you would like to capture between. Step is how much the number is incremented by per capture. Stop is the amount of captures that the program will go through before asking for user input again (0 means the program will continue until the end). Pause is the amount of time between each webpage load/capture.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/100814612/177067035-1ed772c4-6b32-4301-a230-4986806d2168.png"><img>
+</p>
+
+The second tab is for specific webpages you would like to capture.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/100814612/177067306-3c2ab798-d8ee-4c46-97ac-084f3b2ebd5c.png"><img>
 </p>
 
 **Examples of a Screenshot**
