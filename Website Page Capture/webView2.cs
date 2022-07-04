@@ -187,7 +187,7 @@ namespace webView2_Starter_Template
                 cts = new CancellationTokenSource();
                 progressBar1.Maximum = Form.TimeInterval2 - Form.TimeInterval1 + 1;
                 progressBar1.Value = 0;
-                labelProgress.Text = "Progress: "+@"0/"+progressBar1.Maximum;
+                labelProgress.Text = "Progress: " + @"0/" + progressBar1.Maximum;
                 CustomCapture(cts.Token, Form.TimeInterval1, Form.TimeInterval2, Form.Webpage, Form.Increment, Form.Pause, Form.Stop);
             }
             else
@@ -206,29 +206,36 @@ namespace webView2_Starter_Template
                         {
                             //MessageBox.Show(err.ToString());
                         }
-                        cts = new CancellationTokenSource();
-                        progressBar1.Maximum = Form.listView1.Items.Count;
-                        progressBar1.Value = 0;
-                        labelProgress.Text = "Progress: " + @"0/" + progressBar1.Maximum;
-                        CustomCapture2(cts.Token, Form);
+                        finally
+                        {
+                            cts = new CancellationTokenSource();
+                            progressBar1.Maximum = Form.listView1.Items.Count;
+                            progressBar1.Value = 0;
+                            labelProgress.Text = "Progress: " + @"0/" + progressBar1.Maximum;
+                            CustomCapture2(cts.Token, Form);
+                        }
                     }
                 }
             }
         }
+        //Second tab of custom capture is initiated
         public async void CustomCapture2(CancellationToken cancellationToken, dynamic Form)
         {
-            int picNum = 0;
+            //Counting backwards
+            int picNum = Form.listView1.Items.Count;
+            int progress = 0;
             try
             {
                 foreach (ListViewItem myItem in Form.listView1.Items)
                 {
                     AddressBox.Text = myItem.SubItems[0].Text.ToString();
                     LoadUrl();
-                    picNum++;
+                    progress++;
                     await Task.Delay(3500);
                     await DoCustomCapture(picNum);
-                    labelProgress.Text = "Progress: " + picNum + @"/" + progressBar1.Maximum;
-                    progressBar1.Value = picNum;
+                    labelProgress.Text = "Progress: " + progress + @"/" + progressBar1.Maximum;
+                    progressBar1.Value = progress;
+                    picNum--;
                     //Cancel when asked requested to
                     if (cancellationToken.IsCancellationRequested)
                     {
@@ -257,7 +264,7 @@ namespace webView2_Starter_Template
                     await Task.Delay(pause * 1000);
                     picNum++;
                     await DoCustomCapture(picNum);
-                    labelProgress.Text = "Progress: "+picNum + @"/" + progressBar1.Maximum;
+                    labelProgress.Text = "Progress: " + picNum + @"/" + progressBar1.Maximum;
                     progressBar1.Value = picNum;
                     //Pause a bit after screenshot
                     await Task.Delay(500);
@@ -270,7 +277,7 @@ namespace webView2_Starter_Template
                             var dialogResult = MessageBox.Show("Waiting for user input. Click ok to continue.", "Continue?", MessageBoxButtons.OKCancel);
                             if (dialogResult == System.Windows.Forms.DialogResult.OK)
                             {
-                                
+
                             }
                             else
                             {
@@ -320,6 +327,7 @@ namespace webView2_Starter_Template
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //Cancel all the async methods
+            AddressBox.Text = "Attempting to stop...";
             try
             {
                 cts.Cancel();
@@ -329,8 +337,19 @@ namespace webView2_Starter_Template
             {
                 MessageBox.Show("Task has already been stopped!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            AddressBox.Text = "Attempting to stop...";
-            cts.Dispose();
+            finally
+            {
+                cts.Dispose();
+                canStop();
+            }
+        }
+        private async void canStop()
+        {
+            await Task.Delay(6000);
+            if (AddressBox.Text == "Attempting to stop...")
+            {
+                AddressBox.Text = "Nothing to stop";
+            }
         }
         //Open the project directory
         private void btnOpen_Click(object sender, EventArgs e)

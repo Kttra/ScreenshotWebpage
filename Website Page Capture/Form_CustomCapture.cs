@@ -190,5 +190,19 @@ namespace webView2_Starter_Template
             listView1.Items.Insert(0, item);
             textBoxURL.Text = "";
         }
+        //When enter is pressed in the list tab for the link url, add the link to the list
+        private void textBoxURL_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Add items in the listview
+            string[] arr = new String[1];
+            ListViewItem item;
+
+            //Add first item to top
+            arr[0] = textBoxURL.Text;
+
+            item = new ListViewItem(arr);
+            listView1.Items.Insert(0, item);
+            textBoxURL.Text = "";
+        }
     }
 }

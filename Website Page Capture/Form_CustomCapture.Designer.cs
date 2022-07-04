@@ -273,6 +273,7 @@
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(460, 23);
             this.textBoxURL.TabIndex = 1;
+            this.textBoxURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxURL_KeyDown);
             // 
             // label1
             // 

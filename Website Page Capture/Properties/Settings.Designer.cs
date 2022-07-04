@@ -49,7 +49,7 @@ namespace webView2_Starter_Template.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("images")]
         public string FolderName {
             get {
                 return ((string)(this["FolderName"]));
