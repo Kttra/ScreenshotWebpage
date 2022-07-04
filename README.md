@@ -1,5 +1,5 @@
 # ScreenshotWebpage
-A program that screenshots the entire page that the browser is on (creates a jpg file named "Screenshot" in the same folder as the program). Created using C#, .NET 6, and Visual Studio Winforms.
+A program that screenshots the entire page that the browser is on (creates a jpg file named "Screenshot" in the same folder as the program). Created using C#, .NET 6, and Visual Studio. The simple vesion of this project can be found [here](https://github.com/Kttra/ScreenshotWebpage/tree/SimpleVersion).
 
 **Layout**
 ------------
